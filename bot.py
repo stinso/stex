@@ -1,6 +1,38 @@
-from stex_client.public import Public
+# bot.py
+import discord
+import os
 
+from discord.ext import commands, tasks
+from stex_client.public import Public
+from dotenv import load_dotenv
+
+
+############### DISCORD ###############
+TOKEN = os.getenv('DISCORD_TOKEN')
+load_dotenv()
+
+############### STEX ###############
 public = Public()
+
+bot = commands.Bot(command_prefix='!')
+
+@bot.event
+async def on_ready():
+    print(f'{bot.user.name} has connected to Discord!')
+
+
+@bot.command(name='ping', help="Answers with pong")
+async def ping(ctx):
+    await ctx.send("pong")
+
+
+@bot.command(name='price', help="The price")
+async def price(ctx):
+    await ctx.send(public.currencies_by_id(71))
+
+bot.run(TOKEN)
+
+
 ping = public.ping() #https://apidocs.stex.com/#/Public/get_public_ping
 
 if ping['success']:
