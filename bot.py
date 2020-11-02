@@ -8,8 +8,7 @@ from dotenv import load_dotenv
 
 
 ############### DISCORD ###############
-TOKEN = os.getenv('DISCORD_TOKEN')
-load_dotenv()
+TOKEN = DISCORD_TOKEN="NzY5MTY1MDUxNzg0OTg2NjI0.X5LCxg.MLtgOs6zCtFpekJ4ME7-oqxeQkw"
 
 ############### STEX ###############
 public = Public()
